@@ -1,5 +1,35 @@
-import db from "../db/index.js";
-import bcrypt from "bcrypt";
+import {bcrypt} from "bcrypt"; 
+import dotenv from "dotenv";
+import pg from "pg";
+
+dotenv.config();
+
+const pool = new pg.Pool({
+	connectionString: process.env.DATABASE_URL,
+	ssl: {rejectionUnauthorized: false}
+});
+
+async function seedSupabase(){
+	const client = await pool.connect();
+	try{
+		console.log("Connection to Supabase...");
+		await client.query("BEGIN"); //Use a transaction for safety
+
+		//Re-run your tables and mock data here...
+		await client.query(
+			"TRUNCATE rentals, inventory, movies, "+
+			"movies, users RESTART IDENTIFY CASCADE"
+		);
+
+		await client.query("COMMIT");
+		console.log("Supabase Seeded! (RocketEmoji)")
+	}catch(error){
+		conosle.error(error);
+		await client.query("ROLLBACK");
+	}finally{
+		client.release();
+	}
+}
 
 const seedDatabase = async () => {
 	try {

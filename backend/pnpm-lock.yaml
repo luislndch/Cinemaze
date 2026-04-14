@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      bcrypt:
-        specifier: ^6.0.0
-        version: 6.0.0
       cors:
         specifier: ^2.8.6
         version: 2.8.6
@@ -30,6 +27,9 @@ importers:
         specifier: ^4.3.6
         version: 4.3.6
     devDependencies:
+      bcrypt:
+        specifier: ^6.0.0
+        version: 6.0.0
       nodemon:
         specifier: ^3.1.14
         version: 3.1.14
