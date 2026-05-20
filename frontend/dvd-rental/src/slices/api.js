@@ -26,11 +26,19 @@ export const apiSlice = createApi({
 				body: newRental,
 			}),
 			invalidatesTags: ["Movies", "Rentals"]
+		}),
+		login: builder.mutation({
+			query: (credentials) => ({
+				url: '/login',
+				method: 'POST',
+				body: credentials,
+			})
 		})
 	})
 });
 
 export const {
 	useGetMoviesQuery,
-	useCreateRentalMutation
+	useCreateRentalMutation,
+	useLoginMutation
 } = movieapi;

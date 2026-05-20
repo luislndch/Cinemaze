@@ -1,8 +1,7 @@
 import {isValidElement} from "react";
 import {useCreateRentalMutation} from "../slices/api"
 import toast from "react-hot-toast";
-import {Toaster} from "react-hot-toast";
-
+import { Toaster } from "react-hot-toast";
 const RentButton = ({inventory_id, movieTitle}) => {
 
 	const [createRental, {isLoading}] = useCreateRentalMutation();
@@ -35,7 +34,7 @@ const RentButton = ({inventory_id, movieTitle}) => {
 			>
 				{isLoading ? "Processing..." : "Rent Now"}
 			</button>
-			<Toaster />
+			<Toaster/>
 		</>
 	)
 

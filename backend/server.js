@@ -2,6 +2,7 @@ import db from "./db/index.js";
 import express from "express";
 import { configDotenv } from "dotenv";
 import api from "./routes/api.js";
+import authRouter from "./routes/authRouter.js";
 
 configDotenv();
 db.getClient();

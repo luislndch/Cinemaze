@@ -8,6 +8,7 @@ const router = Router();
 router.get("/", (req, res) => {
 	return res.status(200).json({
 		messsage: "welcome to the api endpoint!"
+		
 	});
 });
 

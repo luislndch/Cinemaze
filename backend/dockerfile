@@ -1,0 +1,21 @@
+# step 1: use an official node.js runtime as the base image
+FROM node:18-alpine
+
+#2: set te working directory inside the container
+WORKDIR /app
+
+# Step 3: Copy package dependencies first
+# (Optimizes build caching)
+COPY package*.json ./
+
+# step 4: Install production dependencies
+RUN npm install
+
+# Step 5: Copy the rest of the application
+COPY . .
+
+# Step 6: Expose the internal port your Expressapp listens on
+Expose 5000
+
+# Step 7: Define the command to run your app
+-CMD ["node","server.js"]
